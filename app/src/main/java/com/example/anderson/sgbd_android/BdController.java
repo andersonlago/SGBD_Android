@@ -14,11 +14,11 @@ public class BdController {
     private SQLiteDatabase db;
     private CriaBanco banco;
 
-    public BdController(Context context){
-         banco = new CriaBanco(context);
+    public BdController(Context context) {
+        banco = new CriaBanco(context);
     }
 
-    public Boolean insereDado(String endereco, String longitude, String latitude){
+    public Boolean insereDado(String endereco, String longitude, String latitude) {
         ContentValues valores;
         long resultado;
 
@@ -32,20 +32,20 @@ public class BdController {
 
         db.close();
 
-        if (resultado ==-1)
+        if (resultado == -1)
             return Boolean.FALSE;
         else
             return Boolean.TRUE;
 
     }
 
-    public Cursor carregaDados(){
+    public Cursor carregaDados() {
         Cursor cursor;
-        String[] campos =  {"id","endereco"};
+        String[] campos = {"id", "endereco"};
         db = banco.getReadableDatabase();
         cursor = db.query("local", campos, null, null, null, null, null, null);
 
-        if(cursor!=null){
+        if (cursor != null) {
             cursor.moveToFirst();
         }
         db.close();
